@@ -1,0 +1,12 @@
+.pytest_cache/
+.ruff_cache/
+.venv/
+__pycache__/
+*.egg-info/
+outputs/figures/*.png
+outputs/metrics/*.csv
+outputs/metrics/*.json
+outputs/logs/*.jsonl
+!outputs/figures/.gitkeep
+!outputs/metrics/.gitkeep
+!outputs/logs/.gitkeep

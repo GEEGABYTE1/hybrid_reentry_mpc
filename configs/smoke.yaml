@@ -1,0 +1,17 @@
+seed: 7
+horizon_steps: 120
+dt: 0.1
+initial_state:
+  angle_rad: 0.32
+  rate_rad_s: -0.04
+target_angle_rad: 0.0
+control_limit: 0.35
+damping: 0.08
+inertia: 1.4
+disturbance_scale: 0.025
+controllers:
+  baseline_pd:
+    kp: 1.05
+    kd: 0.62
+  learning_augmented_pd:
+    bias_gain: 0.85

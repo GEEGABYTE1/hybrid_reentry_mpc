@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reentry-mpc"
+version = "0.1.0"
+description = "Research-engineering artifacts for Learning-Augmented MPC for Reentry Attitude Control."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "black>=24.0",
+  "pytest>=8.0",
+  "ruff>=0.5",
+]
+
+[project.scripts]
+reentry-mpc-smoke = "reentry_mpc.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 88
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = []
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
