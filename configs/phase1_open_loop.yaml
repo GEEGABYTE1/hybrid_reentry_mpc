@@ -1,0 +1,28 @@
+seed: 11
+dt: 0.05
+duration_s: 24.0
+initial_state:
+  alpha_rad: 0.11
+  q_radps: 0.0
+  theta_rad: 0.08
+reference_trajectory:
+  start_altitude_m: 78000.0
+  end_altitude_m: 56000.0
+  start_velocity_mps: 6100.0
+  end_velocity_mps: 4200.0
+vehicle:
+  reference_area_m2: 8.0
+  reference_length_m: 3.2
+  pitch_inertia_kgm2: 25000000.0
+aero:
+  cm0: 0.018
+  cm_alpha: -0.34
+  cm_q: -7.5
+  cm_delta: -0.28
+  cm_alpha_mach_slope: -0.006
+  min_effectiveness: 0.35
+  max_effectiveness: 1.0
+control:
+  trim_flap_rad: 0.0
+  step_time_s: 4.0
+  step_delta_rad: 0.035
