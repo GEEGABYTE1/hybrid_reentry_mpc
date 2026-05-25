@@ -1,0 +1,15 @@
+{
+  "all_states_finite": true,
+  "dt": 0.05,
+  "duration_s": 24.0,
+  "max_abs_alpha_rad": 0.11,
+  "max_abs_q_radps": 0.00021951002305609514,
+  "max_abs_theta_rad": 0.08111309937082954,
+  "max_density_kgm3": 0.0003014557837434387,
+  "max_dynamic_pressure_pa": 2658.840012617129,
+  "max_flap_effectiveness": 0.6790684121444284,
+  "max_mach": 20.673199462497386,
+  "min_density_kgm3": 9.388083120263568e-06,
+  "min_flap_effectiveness": 0.41769925514923995,
+  "seed": 11.0
+}
