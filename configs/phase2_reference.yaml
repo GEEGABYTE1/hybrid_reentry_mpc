@@ -1,0 +1,26 @@
+seed: 22
+duration_s: 160.0
+dt: 0.5
+reference_profile:
+  start_altitude_m: 82000.0
+  end_altitude_m: 43000.0
+  start_velocity_mps: 6200.0
+  end_velocity_mps: 2800.0
+  alpha_start_rad: 0.12
+  alpha_peak_rad: 0.28
+  alpha_end_rad: 0.16
+  theta_start_rad: 0.08
+  theta_end_rad: -0.18
+constraints:
+  alpha_margin_rad: 0.07
+  alpha_min_abs_rad: -0.05
+  alpha_max_abs_rad: 0.42
+  q_min_radps: -0.08
+  q_max_radps: 0.08
+  flap_min_rad: -0.35
+  flap_max_rad: 0.35
+  flap_rate_min_radps: -0.18
+  flap_rate_max_radps: 0.18
+diagnostics:
+  dynamic_pressure_limit_pa: 8500.0
+  heating_proxy_limit: 2.5e8
