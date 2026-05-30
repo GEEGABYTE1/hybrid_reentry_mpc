@@ -1,0 +1,41 @@
+seed: 55
+scenario_count: 30
+phase1_config: configs/phase1_open_loop.yaml
+phase2_config: configs/phase2_reference.yaml
+phase3_config: configs/phase3_baselines.yaml
+phase4_config: configs/phase4_nmpc.yaml
+controller_names:
+  - pid
+  - gain_scheduled_lqr
+  - nominal_nmpc
+uncertainty_ranges:
+  density_scale: [0.85, 1.15]
+  cm_alpha_scale: [0.85, 1.15]
+  cm_delta_scale: [0.80, 1.20]
+  cm_q_scale: [0.80, 1.20]
+  actuator_lag_s: [0.0, 0.35]
+  actuator_delay_s_choices: [0.0, 0.5, 1.0]
+  sensor_noise_std:
+    alpha_rad: [0.0, 0.003]
+    q_radps: [0.0, 0.0015]
+    theta_rad: [0.0, 0.003]
+  initial_error_center:
+    alpha_rad: -0.035
+    q_radps: 0.04655
+    theta_rad: 0.0
+  initial_error_half_width:
+    alpha_rad: 0.015
+    q_radps: 0.010
+    theta_rad: 0.020
+  external_disturbance_moment_nm: [-2500.0, 2500.0]
+failure_thresholds:
+  rms_alpha_error_rad: 0.08
+  max_alpha_error_rad: 0.16
+  corridor_tolerance_rad: 0.001
+  flap_saturation_fraction: 0.25
+  flap_rate_saturation_fraction: 0.25
+  unstable_alpha_abs_rad: 0.75
+  unstable_q_abs_radps: 0.40
+  unstable_theta_abs_rad: 8.0
+plot_settings:
+  envelope_percentiles: [5.0, 95.0]

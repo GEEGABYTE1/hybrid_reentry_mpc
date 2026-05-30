@@ -1,0 +1,33 @@
+seed: 33
+phase1_config: configs/phase1_open_loop.yaml
+phase2_config: configs/phase2_reference.yaml
+initial_error:
+  alpha_rad: -0.035
+  q_radps: 0.0
+  theta_rad: 0.025
+pid:
+  kp_alpha: 1.45
+  ki_alpha: 0.015
+  kd_alpha: 0.0
+  kp_q: 8.5
+  anti_windup_limit: 2.0
+lqr:
+  q_weights:
+    alpha: 260.0
+    q: 900.0
+    theta: 18.0
+  r_weight: 0.75
+  schedule_points:
+    - label: high_altitude_low_qbar
+      altitude_m: 76000.0
+      velocity_mps: 5900.0
+    - label: mid_entry
+      altitude_m: 62000.0
+      velocity_mps: 4700.0
+    - label: lower_entry_high_qbar
+      altitude_m: 47000.0
+      velocity_mps: 3200.0
+success_thresholds:
+  rms_alpha_error_rad: 0.08
+  max_alpha_error_rad: 0.16
+  corridor_violation_count: 0

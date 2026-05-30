@@ -1,0 +1,27 @@
+seed: 44
+phase1_config: configs/phase1_open_loop.yaml
+phase2_config: configs/phase2_reference.yaml
+phase3_metrics: outputs/phase3_baselines/baseline_metrics_table.csv
+initial_error:
+  alpha_rad: -0.035
+  q_radps: 0.04655
+  theta_rad: 0.0
+control_dt_s: 2.0
+horizon_steps: 10
+corridor_tolerance_rad: 0.001
+weights:
+  alpha: 6000.0
+  q: 2200.0
+  theta: 10.0
+  control: 0.05
+  flap_rate: 0.2
+  terminal_alpha: 9000.0
+  state_slack: 10000000.0
+solver:
+  max_iter: 80
+  acceptable_tol: 1.0e-5
+  print_level: 0
+success_thresholds:
+  rms_alpha_error_rad: 0.08
+  max_alpha_error_rad: 0.16
+  corridor_violation_count: 0
