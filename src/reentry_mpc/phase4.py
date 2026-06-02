@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -25,7 +24,7 @@ from reentry_mpc.phase2 import build_reference_profile, load_phase2_config
 
 @dataclass(frozen=True)
 class Phase4Config:
- 
+
     seed: int
     phase1_config: Path
     phase2_config: Path

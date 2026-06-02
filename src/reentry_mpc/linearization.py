@@ -1,5 +1,4 @@
-
-#linearization utilities
+# linearization utilities
 
 from __future__ import annotations
 
@@ -30,7 +29,7 @@ def derivatives_for_schedule(
     vehicle: VehicleParams,
     aero: AeroParams,
 ) -> np.ndarray:
-    
+
     moment_nm, _cm, _effectiveness = scheduled_pitching_moment(
         state=state,
         delta_flap_rad=delta_flap_rad,
@@ -39,7 +38,7 @@ def derivatives_for_schedule(
         aero=aero,
     )
     q_dot = moment_nm / vehicle.pitch_inertia_kgm2
-    alpha_dot = q_dot - 0.22 * state[0]
+    alpha_dot = state[1] - 0.22 * state[0]
     theta_dot = state[1]
     return np.array([alpha_dot, q_dot, theta_dot], dtype=float)
 
@@ -55,8 +54,8 @@ def finite_difference_linearization(
     state_eps: float = 1.0e-5,
     control_eps: float = 1.0e-5,
 ) -> LinearModel:
-    
-    #we are forwarding with Euler
+
+    # we are forwarding with Euler
 
     n_state = state.size
     a_continuous = np.zeros((n_state, n_state))
@@ -113,10 +112,9 @@ def solve_discrete_lqr_gain(
     max_iterations: int = 500,
     tolerance: float = 1.0e-10,
 ) -> np.ndarray:
-    
 
     p_matrix = q_weight.copy()
-    for _iteration in range(max_iterations): #riccati iteration 
+    for _iteration in range(max_iterations):  # riccati iteration
         gain_term = r_weight + b_discrete.T @ p_matrix @ b_discrete
         p_next = (
             a_discrete.T @ p_matrix @ a_discrete

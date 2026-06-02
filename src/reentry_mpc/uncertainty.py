@@ -1,5 +1,4 @@
-
-#scenario samling and uncertain rollout utilities f
+# scenario samling and uncertain rollout utilities f
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
@@ -13,7 +12,7 @@ from reentry_mpc.longitudinal import AeroParams, VehicleParams, flap_effectivene
 
 @dataclass(frozen=True)
 class SensorNoiseStd:
-    #per-state sensor noise std
+    # per-state sensor noise std
     alpha_rad: float
     q_radps: float
     theta_rad: float
@@ -21,7 +20,7 @@ class SensorNoiseStd:
 
 @dataclass(frozen=True)
 class InitialStateError:
-    #initial state offset from first ref state
+    # initial state offset from first ref state
     alpha_rad: float
     q_radps: float
     theta_rad: float
@@ -64,7 +63,7 @@ class UncertaintyScenario:
         }
 
     def to_nested_dict(self) -> dict[str, Any]:
-        
+
         return asdict(self)
 
 

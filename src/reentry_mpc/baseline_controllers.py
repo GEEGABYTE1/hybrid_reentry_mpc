@@ -114,8 +114,15 @@ class GainScheduledLQRController:
 
 
 def build_lqr_controller(
-    *, schedule_points: list[dict[str, float | str]], q_weights: dict[str, float], r_weight: float, dt: float, vehicle: VehicleParams, aero: AeroParams,) -> GainScheduledLQRController:
-     # Build local gains for the configured schedule points.
+    *,
+    schedule_points: list[dict[str, float | str]],
+    q_weights: dict[str, float],
+    r_weight: float,
+    dt: float,
+    vehicle: VehicleParams,
+    aero: AeroParams,
+) -> GainScheduledLQRController:
+    # Build local gains for the configured schedule points.
 
     q_matrix = np.diag([q_weights["alpha"], q_weights["q"], q_weights["theta"]]).astype(
         float

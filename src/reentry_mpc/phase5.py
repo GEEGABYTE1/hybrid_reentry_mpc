@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import json
@@ -39,33 +38,59 @@ from reentry_mpc.uncertainty import (
 
 
 @dataclass(frozen=True)
-class Phase5Config:
-    
-    seed: int
+class MonteCarloTier:
+    """Named uncertainty tier for Phase 5."""
+
+    name: str
     scenario_count: int
+    uncertainty_ranges: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class Phase5Config:
+    """Configuration for the Monte Carlo uncertainty benchmark."""
+
+    seed: int
     phase1_config: Path
     phase2_config: Path
     phase3_config: Path
     phase4_config: Path
     controller_names: list[str]
-    uncertainty_ranges: dict[str, Any]
+    tiers: list[MonteCarloTier]
     failure_thresholds: dict[str, float]
     plot_settings: dict[str, Any]
 
 
 def load_phase5_config(path: str | Path) -> Phase5Config:
+    """Load Phase 5 config."""
 
     with Path(path).open("r", encoding="utf-8") as handle:
         raw: dict[str, Any] = yaml.safe_load(handle)
+    if "tiers" in raw:
+        tiers = [
+            MonteCarloTier(
+                name=str(tier["name"]),
+                scenario_count=int(tier["scenario_count"]),
+                uncertainty_ranges=dict(tier["uncertainty_ranges"]),
+            )
+            for tier in raw["tiers"]
+        ]
+    else:
+        tiers = [
+            MonteCarloTier(
+                name=str(raw.get("tier_name", "moderate")),
+                scenario_count=int(raw["scenario_count"]),
+                uncertainty_ranges=dict(raw["uncertainty_ranges"]),
+            )
+        ]
     return Phase5Config(
         seed=int(raw["seed"]),
-        scenario_count=int(raw["scenario_count"]),
         phase1_config=Path(raw["phase1_config"]),
         phase2_config=Path(raw["phase2_config"]),
         phase3_config=Path(raw["phase3_config"]),
         phase4_config=Path(raw["phase4_config"]),
         controller_names=list(raw["controller_names"]),
-        uncertainty_ranges=dict(raw["uncertainty_ranges"]),
+        tiers=tiers,
         failure_thresholds={
             key: float(value) for key, value in raw["failure_thresholds"].items()
         },
@@ -77,7 +102,8 @@ def run_phase5_monte_carlo(
     config_path: str | Path = "configs/phase5_monte_carlo.yaml",
     output_dir: str | Path = "outputs/phase5_monte_carlo",
 ) -> dict[str, Path | pd.DataFrame]:
-    
+    """Run the Phase 5 Monte Carlo benchmark and save artifacts."""
+
     config = load_phase5_config(config_path)
     plant_config = load_phase1_config(config.phase1_config)
     phase2_config = load_phase2_config(config.phase2_config)
@@ -98,53 +124,62 @@ def run_phase5_monte_carlo(
 
     summary_rows: list[dict[str, Any]] = []
     rollouts: list[pd.DataFrame] = []
-    for scenario_id in range(config.scenario_count):
-        scenario_seed = config.seed + scenario_id
-        scenario = sample_scenario(
-            scenario_id=scenario_id,
-            seed=scenario_seed,
-            ranges=config.uncertainty_ranges,
-        )
-        for controller_name in config.controller_names:
-            rollout = _rollout_one_controller(
-                controller_name=controller_name,
-                scenario=scenario,
-                controller=controllers.get(controller_name),
-                reference_profile=reference_profile,
-                nmpc_reference=nmpc_reference,
-                plant_config=plant_config,
-                phase4_config=phase4_config,
-                thresholds=config.failure_thresholds,
+    for tier_idx, tier in enumerate(config.tiers):
+        for scenario_id in range(tier.scenario_count):
+            scenario_seed = config.seed + tier_idx * 10_000 + scenario_id
+            scenario = sample_scenario(
+                scenario_id=scenario_id,
+                seed=scenario_seed,
+                ranges=tier.uncertainty_ranges,
             )
-            metrics = summarize_monte_carlo_rollout(
-                rollout=rollout,
-                controller_name=controller_name,
-                scenario=scenario,
-                thresholds=config.failure_thresholds,
-            )
-            run_dir = output_path / f"scenario_{scenario_id:03d}" / controller_name
-            run_dir.mkdir(parents=True, exist_ok=True)
-            trajectory_path = run_dir / "trajectory.csv"
-            metrics_path = run_dir / "metrics.json"
-            rollout.to_csv(trajectory_path, index=False)
-            metrics_payload = {
-                **metrics,
-                "trajectory_csv": str(trajectory_path),
-                "uncertainty_parameters": scenario.to_nested_dict(),
-            }
-            metrics_path.write_text(
-                json.dumps(metrics_payload, indent=2, sort_keys=True),
-                encoding="utf-8",
-            )
-            summary_rows.append(
-                {
-                    **scenario.to_flat_dict(),
+            for controller_name in config.controller_names:
+                rollout = _rollout_one_controller(
+                    tier_name=tier.name,
+                    controller_name=controller_name,
+                    scenario=scenario,
+                    controller=controllers.get(controller_name),
+                    reference_profile=reference_profile,
+                    nmpc_reference=nmpc_reference,
+                    plant_config=plant_config,
+                    phase4_config=phase4_config,
+                    thresholds=config.failure_thresholds,
+                )
+                metrics = summarize_monte_carlo_rollout(
+                    rollout=rollout,
+                    tier_name=tier.name,
+                    controller_name=controller_name,
+                    scenario=scenario,
+                    thresholds=config.failure_thresholds,
+                )
+                run_dir = (
+                    output_path
+                    / tier.name
+                    / f"scenario_{scenario_id:03d}"
+                    / controller_name
+                )
+                run_dir.mkdir(parents=True, exist_ok=True)
+                trajectory_path = run_dir / "trajectory.csv"
+                metrics_path = run_dir / "metrics.json"
+                rollout.to_csv(trajectory_path, index=False)
+                metrics_payload = {
                     **metrics,
                     "trajectory_csv": str(trajectory_path),
-                    "metrics_json": str(metrics_path),
+                    "uncertainty_parameters": scenario.to_nested_dict(),
                 }
-            )
-            rollouts.append(rollout)
+                metrics_path.write_text(
+                    json.dumps(metrics_payload, indent=2, sort_keys=True),
+                    encoding="utf-8",
+                )
+                summary_rows.append(
+                    {
+                        "tier": tier.name,
+                        **scenario.to_flat_dict(),
+                        **metrics,
+                        "trajectory_csv": str(trajectory_path),
+                        "metrics_json": str(metrics_path),
+                    }
+                )
+                rollouts.append(rollout)
 
     summary = pd.DataFrame(summary_rows)
     combined_rollouts = pd.concat(rollouts, ignore_index=True)
@@ -170,11 +205,13 @@ def run_phase5_monte_carlo(
 def summarize_monte_carlo_rollout(
     *,
     rollout: pd.DataFrame,
+    tier_name: str,
     controller_name: str,
     scenario: UncertaintyScenario,
     thresholds: dict[str, float],
 ) -> dict[str, Any]:
-    
+    """Compute per-rollout metrics and the ordered failure label."""
+
     alpha_error_abs = rollout["alpha_error_rad"].abs()
     q_error = rollout["q_error_rad"]
     control = rollout["delta_flap_rad"]
@@ -229,6 +266,7 @@ def summarize_monte_carlo_rollout(
         failure_label = "success" if tracking_success else "alpha_corridor_violation"
 
     return {
+        "tier": tier_name,
         "controller": controller_name,
         "scenario_id": scenario.scenario_id,
         "seed": scenario.seed,
@@ -253,7 +291,8 @@ def write_phase5_figures(
     output_dir: Path,
     plot_settings: dict[str, Any],
 ) -> dict[str, Path]:
-    
+    """Write Phase 5 benchmark figures."""
+
     success_path = output_dir / "monte_carlo_success_rates.png"
     envelope_path = output_dir / "alpha_error_envelopes.png"
     failure_path = output_dir / "failure_mode_stacked_bar.png"
@@ -262,27 +301,29 @@ def write_phase5_figures(
 
     success_rates = (
         summary.assign(success=summary["failure_label"].eq("success"))
-        .groupby("controller", as_index=True)["success"]
+        .groupby(["tier", "controller"], as_index=True)["success"]
         .mean()
         .sort_index()
     )
     fig, ax = plt.subplots(figsize=(7.2, 4.6))
-    success_rates.plot(kind="bar", ax=ax)
+    success_rates.unstack("controller").plot(kind="bar", ax=ax)
     ax.set_ylim(0.0, 1.0)
     ax.set_ylabel("Success rate")
-    ax.set_xlabel("Controller")
+    ax.set_xlabel("Uncertainty tier")
     fig.tight_layout()
     fig.savefig(success_path, dpi=160)
     plt.close(fig)
 
     percentiles = plot_settings.get("envelope_percentiles", [5.0, 95.0])
     fig, ax = plt.subplots(figsize=(9.0, 5.0))
-    for controller, frame in rollouts.groupby("controller", sort=True):
+    for (tier, controller), frame in rollouts.groupby(
+        ["tier", "controller"], sort=True
+    ):
         grouped = frame.groupby("time_s")["alpha_error_rad"]
         median = grouped.median()
         low = grouped.quantile(float(percentiles[0]) / 100.0)
         high = grouped.quantile(float(percentiles[1]) / 100.0)
-        ax.plot(median.index, median.to_numpy(), label=f"{controller} median")
+        ax.plot(median.index, median.to_numpy(), label=f"{tier}/{controller}")
         ax.fill_between(median.index, low.to_numpy(), high.to_numpy(), alpha=0.16)
     ax.set_xlabel("Time (s)")
     ax.set_ylabel("Alpha error (rad)")
@@ -291,10 +332,12 @@ def write_phase5_figures(
     fig.savefig(envelope_path, dpi=160)
     plt.close(fig)
 
-    failure_counts = pd.crosstab(summary["controller"], summary["failure_label"])
+    failure_counts = pd.crosstab(
+        [summary["tier"], summary["controller"]], summary["failure_label"]
+    )
     fig, ax = plt.subplots(figsize=(8.0, 5.0))
     failure_counts.sort_index().plot(kind="bar", stacked=True, ax=ax)
-    ax.set_xlabel("Controller")
+    ax.set_xlabel("Uncertainty tier / controller")
     ax.set_ylabel("Scenario count")
     ax.legend(loc="best")
     fig.tight_layout()
@@ -302,12 +345,12 @@ def write_phase5_figures(
     plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(8.0, 5.0))
-    for controller, frame in summary.groupby("controller", sort=True):
+    for (tier, controller), frame in summary.groupby(["tier", "controller"], sort=True):
         ax.hist(
             frame["rms_alpha_error_rad"],
             alpha=0.45,
             bins=10,
-            label=controller,
+            label=f"{tier}/{controller}",
         )
     ax.set_xlabel("RMS alpha error (rad)")
     ax.set_ylabel("Count")
@@ -316,11 +359,14 @@ def write_phase5_figures(
     fig.savefig(histogram_path, dpi=160)
     plt.close(fig)
 
-    worst_row = summary.sort_values(
-        ["failure_label", "max_alpha_error_rad"], ascending=[True, False]
-    ).iloc[-1]
+    worst_row = (
+        summary.assign(non_success=summary["failure_label"].ne("success"))
+        .sort_values(["non_success", "max_alpha_error_rad"], ascending=[False, False])
+        .iloc[0]
+    )
     worst = rollouts[
-        (rollouts["scenario_id"] == int(worst_row["scenario_id"]))
+        (rollouts["tier"] == worst_row["tier"])
+        & (rollouts["scenario_id"] == int(worst_row["scenario_id"]))
         & (rollouts["controller"] == worst_row["controller"])
     ]
     fig, axes = plt.subplots(2, 1, figsize=(9.0, 6.4), sharex=True)
@@ -340,7 +386,8 @@ def write_phase5_figures(
     axes[1].set_xlabel("Time (s)")
     axes[0].set_title(
         "Worst replay: "
-        f"{worst_row['controller']} scenario {int(worst_row['scenario_id'])}"
+        f"{worst_row['tier']}/{worst_row['controller']} "
+        f"scenario {int(worst_row['scenario_id'])}"
     )
     axes[0].legend(loc="best")
     axes[1].legend(loc="best")
@@ -359,6 +406,7 @@ def write_phase5_figures(
 
 def _rollout_one_controller(
     *,
+    tier_name: str,
     controller_name: str,
     scenario: UncertaintyScenario,
     controller: PIDController | GainScheduledLQRController | None,
@@ -459,6 +507,7 @@ def _rollout_one_controller(
         rows.append(
             {
                 "scenario_id": scenario.scenario_id,
+                "tier": tier_name,
                 "seed": scenario.seed,
                 "controller": controller_name,
                 "time_s": float(row["time_s"]),

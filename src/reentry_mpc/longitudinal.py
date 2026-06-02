@@ -167,7 +167,7 @@ def longitudinal_derivatives(
         aero=config.aero,
     )
     q_dot = moment_nm / config.vehicle.pitch_inertia_kgm2
-    alpha_dot = q_dot - 0.22 * state[0]
+    alpha_dot = state[1] - 0.22 * state[0]
     theta_dot = state[1]
     return np.array([alpha_dot, q_dot, theta_dot], dtype=float)
 

@@ -1,5 +1,4 @@
-
-#nominal nonlinear mpc utilities using casdi
+# nominal nonlinear mpc utilities using casdi
 from __future__ import annotations
 
 import time
@@ -223,7 +222,7 @@ def rk4_step_numeric(
     aero: AeroParams,
     dt: float,
 ) -> np.ndarray:
-    #rk4 
+    # rk4
     k1 = nmpc_derivatives_numeric(
         state=state, delta_flap_rad=delta_flap_rad, row=row, vehicle=vehicle, aero=aero
     )

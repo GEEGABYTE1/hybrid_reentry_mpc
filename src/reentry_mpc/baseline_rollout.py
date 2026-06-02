@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 from typing import Protocol
@@ -19,6 +18,7 @@ class ControllerProtocol(Protocol):
 
     def reset(self) -> None:
         pass
+
     def command(
         self,
         *,
