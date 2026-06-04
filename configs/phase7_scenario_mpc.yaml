@@ -1,0 +1,44 @@
+seed: 77
+phase5_config: configs/phase5_monte_carlo.yaml
+phase1_config: configs/phase1_open_loop.yaml
+phase2_config: configs/phase2_reference.yaml
+phase4_config: configs/phase4_nmpc.yaml
+phase6_summary: outputs/phase6_robust_mpc/phase6_vs_phase5_summary.csv
+controller_name: scenario_nmpc
+scenario_mpc:
+  horizon_steps: 6
+  control_dt_s: 2.0
+  max_scenarios_per_tier: 12
+  weights:
+    alpha: 6000.0
+    q: 2200.0
+    theta: 10.0
+    control: 0.05
+    flap_rate: 0.2
+    terminal_alpha: 9000.0
+    state_slack: 10000000.0
+  solver:
+    max_iter: 80
+    acceptable_tol: 1.0e-5
+    print_level: 0
+  design_scenarios:
+    - name: nominal
+      density_scale: 1.0
+      cm_alpha_scale: 1.0
+      cm_delta_scale: 1.0
+      cm_q_scale: 1.0
+      external_disturbance_moment_nm: 0.0
+    - name: low_authority
+      density_scale: 0.82
+      cm_alpha_scale: 1.10
+      cm_delta_scale: 0.72
+      cm_q_scale: 0.85
+      external_disturbance_moment_nm: 2200.0
+    - name: high_pressure_reverse_disturbance
+      density_scale: 1.18
+      cm_alpha_scale: 0.90
+      cm_delta_scale: 1.18
+      cm_q_scale: 1.15
+      external_disturbance_moment_nm: -2200.0
+plot_settings:
+  envelope_percentiles: [5.0, 95.0]
