@@ -1,0 +1,37 @@
+from __future__ import annotations
+
+import argparse
+
+from reentry_mpc.phase6 import run_phase6_robust_mpc
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Run Phase 6 constraint-tightened NMPC benchmark."
+    )
+    parser.add_argument(
+        "--config", default="configs/phase6_robust_mpc.yaml", help="Phase 6 config."
+    )
+    parser.add_argument(
+        "--output-dir",
+        default="outputs/phase6_robust_mpc",
+        help="Directory for Phase 6 artifacts.",
+    )
+    parser.add_argument(
+        "--progress",
+        action="store_true",
+        help="Print one progress line per tier/scenario rollout.",
+    )
+    args = parser.parse_args()
+    artifacts = run_phase6_robust_mpc(
+        config_path=args.config, output_dir=args.output_dir, progress=args.progress
+    )
+    print(
+        "phase6_ok "
+        f"summary={artifacts['summary_csv']} "
+        f"comparison={artifacts['comparison_csv']}"
+    )
+
+
+if __name__ == "__main__":
+    main()
