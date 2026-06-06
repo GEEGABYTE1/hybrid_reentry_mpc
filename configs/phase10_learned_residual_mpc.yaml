@@ -1,0 +1,12 @@
+seed: 110
+phase5_config: configs/phase5_monte_carlo.yaml
+phase1_config: configs/phase1_open_loop.yaml
+phase2_config: configs/phase2_reference.yaml
+phase4_config: configs/phase4_nmpc.yaml
+phase7_summary: outputs/phase7_scenario_mpc/phase7_vs_prior_summary.csv
+residual_checkpoint: outputs/phase9_residual_model/residual_model_checkpoint.pt
+controller_name: learned_residual_nmpc
+max_scenarios_per_tier: 8
+residual_gain: 1.0
+plot_settings:
+  envelope_percentiles: [5.0, 95.0]

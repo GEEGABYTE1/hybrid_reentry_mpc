@@ -1,0 +1,10 @@
+seed: 99
+dataset_dir: outputs/phase8_residual_dataset
+output_dir: outputs/phase9_residual_model
+model:
+  hidden_sizes: [64, 64]
+  learning_rate: 0.001
+  weight_decay: 0.000001
+  batch_size: 128
+  epochs: 140
+  patience: 30

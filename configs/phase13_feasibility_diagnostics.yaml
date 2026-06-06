@@ -1,0 +1,8 @@
+phase12_summary: outputs/phase12_learning_augmented_mpc/phase12_summary_table.csv
+phase12_rollouts: outputs/phase12_learning_augmented_mpc/phase12_rollouts.csv
+alpha_slack_bins_rad: [0.0, 0.0025, 0.005, 0.01, 0.02, 0.05, 0.10]
+plot_settings:
+  controller_order:
+    - nominal_nmpc
+    - residual_corrected_nmpc
+    - residual_corrected_tightened_nmpc

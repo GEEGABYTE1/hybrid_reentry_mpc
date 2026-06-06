@@ -1,0 +1,38 @@
+seed: 122
+phase5_config: configs/phase5_monte_carlo.yaml
+phase1_config: configs/phase1_open_loop.yaml
+phase2_config: configs/phase2_reference.yaml
+residual_model_checkpoint: outputs/phase9_residual_model/residual_model_checkpoint.pt
+controller_variants:
+  - name: nominal_nmpc
+    residual_gain: 0.0
+    use_residual_model: false
+    use_tightened_corridor: false
+  - name: residual_corrected_nmpc
+    residual_gain: 1.0
+    use_residual_model: true
+    use_tightened_corridor: false
+  - name: residual_corrected_tightened_nmpc
+    residual_gain: 1.0
+    use_residual_model: true
+    use_tightened_corridor: true
+tightening:
+  alpha_margin_rad: 0.035
+  q_margin_radps: 0.010
+nmpc:
+  horizon_steps: 10
+  control_dt_s: 2.0
+  weights:
+    alpha: 6000.0
+    q: 2200.0
+    theta: 10.0
+    control: 0.05
+    flap_rate: 0.2
+    terminal_alpha: 9000.0
+    state_slack: 10000000.0
+  solver:
+    max_iter: 80
+    acceptable_tol: 1.0e-5
+    print_level: 0
+plot_settings:
+  envelope_percentiles: [5.0, 95.0]

@@ -1,0 +1,29 @@
+seed: 121
+phase5_config: configs/phase5_monte_carlo.yaml
+phase1_config: configs/phase1_open_loop.yaml
+phase2_config: configs/phase2_reference.yaml
+phase7_summary: outputs/phase7_scenario_mpc/phase7_vs_prior_summary.csv
+residual_dataset_dir: outputs/phase8_residual_dataset
+controller_name: residual_horizon_nmpc
+max_scenarios_per_tier: 12
+residual_gains: [0.0, 0.5, 1.0, 2.0]
+surrogate:
+  ridge_lambda: 0.000001
+  feature_mode: quadratic
+nmpc:
+  horizon_steps: 6
+  control_dt_s: 2.0
+  weights:
+    alpha: 6000.0
+    q: 2200.0
+    theta: 10.0
+    control: 0.05
+    flap_rate: 0.2
+    terminal_alpha: 9000.0
+    state_slack: 10000000.0
+  solver:
+    max_iter: 80
+    acceptable_tol: 1.0e-5
+    print_level: 0
+plot_settings:
+  envelope_percentiles: [5.0, 95.0]
