@@ -1,0 +1,54 @@
+seed: 1511
+phase1_config: configs/phase1_open_loop.yaml
+phase2_config: configs/phase2_reference.yaml
+phase3_config: configs/phase3_baselines.yaml
+phase5_config: configs/phase5_monte_carlo.yaml
+residual_model_checkpoint: outputs/phase9_residual_model/residual_model_checkpoint.pt
+controllers:
+  - residual_nmpc_no_fallback
+  - residual_nmpc_with_fallback
+initial_error:
+  alpha_rad: -0.035
+  q_radps: 0.04655
+  theta_rad: 0.0
+tightening:
+  alpha_margin_rad: 0.035
+  q_margin_radps: 0.010
+fallback:
+  residual_error_threshold_rad: 0.045
+  repeated_solver_failure_limit: 2
+  hold_previous_on_fault: true
+faults:
+  - name: stuck_flap
+    trigger_time_s: 35.0
+    stuck_flap_rad: 0.04
+  - name: reduced_flap_effectiveness
+    trigger_time_s: 35.0
+    cm_delta_scale: 0.35
+  - name: biased_alpha_measurement
+    trigger_time_s: 25.0
+    alpha_bias_rad: 0.06
+  - name: delayed_actuator
+    trigger_time_s: 30.0
+    extra_delay_s: 2.0
+  - name: sudden_density_jump
+    trigger_time_s: 45.0
+    density_scale: 1.45
+  - name: large_unmodeled_disturbance
+    trigger_time_s: 40.0
+    disturbance_moment_nm: 9000.0
+nmpc:
+  horizon_steps: 8
+  control_dt_s: 2.0
+  weights:
+    alpha: 6000.0
+    q: 2200.0
+    theta: 10.0
+    control: 0.05
+    flap_rate: 0.2
+    terminal_alpha: 9000.0
+    state_slack: 10000000.0
+  solver:
+    max_iter: 80
+    acceptable_tol: 1.0e-5
+    print_level: 0
