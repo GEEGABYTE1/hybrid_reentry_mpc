@@ -200,7 +200,7 @@ def write_phase6_figures(
     output_dir: Path,
     plot_settings: dict[str, Any],
 ) -> dict[str, Path]:
-    
+
     success_path = output_dir / "tightened_nmpc_success_rates.png"
     comparison_path = output_dir / "phase6_vs_phase5_success_rates.png"
     envelope_path = output_dir / "tightened_nmpc_alpha_error_envelopes.png"

@@ -82,7 +82,7 @@ def solve_scenario_mpc_step(
     aero: AeroParams,
     config: ScenarioMpcConfig,
 ) -> tuple[float, dict[str, Any]]:
-    
+
     horizon = _pad_horizon(horizon, config.nmpc.horizon_steps + 1)
     opti = ca.Opti()
     u_var = opti.variable(1, config.nmpc.horizon_steps)

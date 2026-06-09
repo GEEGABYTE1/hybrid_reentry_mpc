@@ -30,7 +30,7 @@ def build_horizon_residual_biases(
     horizon: pd.DataFrame,
     horizon_steps: int,
 ) -> tuple[np.ndarray, float]:
-    #predict one residual q-dot bias for each horizon interval
+    # predict one residual q-dot bias for each horizon interval
 
     start = time.perf_counter()
     horizon = _pad_horizon(horizon, horizon_steps + 1)

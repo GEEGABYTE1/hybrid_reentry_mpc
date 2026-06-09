@@ -418,12 +418,18 @@ def rollout_oracle_imitation_policy(
 
 
 def add_policy_features(frame: pd.DataFrame) -> pd.DataFrame:
-    result = frame.copy().sort_values(["tier", "scenario_id", "time_s"]).reset_index(drop=True)
+    result = (
+        frame.copy()
+        .sort_values(["tier", "scenario_id", "time_s"])
+        .reset_index(drop=True)
+    )
     center = 0.5 * (result["alpha_min_rad"] + result["alpha_max_rad"])
     result["alpha_error_to_center_rad"] = result["alpha_rad"] - center
     result["alpha_margin_low_rad"] = result["alpha_rad"] - result["alpha_min_rad"]
     result["alpha_margin_high_rad"] = result["alpha_max_rad"] - result["alpha_rad"]
-    result["dynamic_pressure_scaled"] = result.get("dynamic_pressure_pa", 0.0) / 10_000.0
+    result["dynamic_pressure_scaled"] = (
+        result.get("dynamic_pressure_pa", 0.0) / 10_000.0
+    )
     result["mach_scaled"] = result.get("mach", 0.0) / 20.0
     if "actuator_tau_prediction_s" in result:
         result["actuator_tau_s"] = result["actuator_tau_prediction_s"]
@@ -432,10 +438,9 @@ def add_policy_features(frame: pd.DataFrame) -> pd.DataFrame:
     # Corridor rates: finite-difference within each scenario trajectory.
     # First step of each scenario gets zero rate (no look-back across scenarios).
     dt_col = result["time_s"].diff()
-    same_scenario = (
-        result["tier"].eq(result["tier"].shift())
-        & result["scenario_id"].eq(result["scenario_id"].shift())
-    )
+    same_scenario = result["tier"].eq(result["tier"].shift()) & result[
+        "scenario_id"
+    ].eq(result["scenario_id"].shift())
     alpha_min_diff = result["alpha_min_rad"].diff()
     alpha_max_diff = result["alpha_max_rad"].diff()
     result["alpha_min_rate_radps"] = np.where(
@@ -501,8 +506,12 @@ def _feature_dict_from_state(
 ) -> dict[str, float]:
     center = 0.5 * (float(row["alpha_min_rad"]) + float(row["alpha_max_rad"]))
     if prev_row is not None and dt > 0:
-        alpha_min_rate = (float(row["alpha_min_rad"]) - float(prev_row["alpha_min_rad"])) / dt
-        alpha_max_rate = (float(row["alpha_max_rad"]) - float(prev_row["alpha_max_rad"])) / dt
+        alpha_min_rate = (
+            float(row["alpha_min_rad"]) - float(prev_row["alpha_min_rad"])
+        ) / dt
+        alpha_max_rate = (
+            float(row["alpha_max_rad"]) - float(prev_row["alpha_max_rad"])
+        ) / dt
     else:
         alpha_min_rate = 0.0
         alpha_max_rate = 0.0
