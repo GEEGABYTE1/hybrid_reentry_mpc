@@ -1,0 +1,59 @@
+seed: 220
+phase5_config: configs/phase5_monte_carlo.yaml
+phase1_config: configs/phase1_open_loop.yaml
+phase2_config: configs/phase2_reference.yaml
+phase20_output_dir: outputs/phase20_full_oracle_imitation
+phase20_baseline_controller: ridge_safety
+scenario_count_per_tier: 30
+max_time_s: 40.0
+variants:
+  - name: online_slack_mpc
+    control_dt_s: 1.0
+    horizon_steps: 6
+    alpha_buffer_rad: 0.0
+    terminal_center_weight: 3000.0
+    weights:
+      alpha_slack: 120000000.0
+      q_slack: 8000000.0
+      alpha_center: 1500.0
+      q_center: 350.0
+      theta_tracking: 1.0
+      command: 0.025
+      command_rate: 0.25
+  - name: online_slack_mpc_centered
+    control_dt_s: 1.0
+    horizon_steps: 6
+    alpha_buffer_rad: 0.002
+    terminal_center_weight: 12000.0
+    weights:
+      alpha_slack: 120000000.0
+      q_slack: 8000000.0
+      alpha_center: 6000.0
+      q_center: 600.0
+      theta_tracking: 1.0
+      command: 0.025
+      command_rate: 0.30
+  - name: online_slack_mpc_fast
+    control_dt_s: 0.5
+    horizon_steps: 4
+    alpha_buffer_rad: 0.0
+    terminal_center_weight: 2500.0
+    weights:
+      alpha_slack: 120000000.0
+      q_slack: 8000000.0
+      alpha_center: 1200.0
+      q_center: 300.0
+      theta_tracking: 1.0
+      command: 0.030
+      command_rate: 0.35
+solver:
+  max_iter: 45
+  acceptable_tol: 1.0e-5
+  print_level: 0
+failure_thresholds:
+  controlled_recovery_max_alpha_miss_rad: 0.025
+  controlled_recovery_max_q_miss_radps: 0.010
+  controlled_recovery_max_alpha_abs_rad: 0.55
+  controlled_recovery_max_q_abs_radps: 0.22
+plot_settings:
+  envelope_percentiles: [5.0, 95.0]
