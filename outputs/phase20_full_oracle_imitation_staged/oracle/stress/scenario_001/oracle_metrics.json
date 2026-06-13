@@ -1,0 +1,38 @@
+{
+  "actuator_tau_prediction_s": 1.1573352173100182,
+  "controller": "slack_oracle",
+  "first_alpha_violation_side": "none",
+  "first_alpha_violation_time_s": NaN,
+  "objective_value": 72.4737743973829,
+  "oracle_alpha_violation_duration_s": 0.0,
+  "oracle_feasible": true,
+  "oracle_max_alpha_miss_rad": 0.0,
+  "oracle_max_q_miss_radps": 0.0,
+  "oracle_near_feasible": true,
+  "scenario_id": 1,
+  "seed": 10056,
+  "solve_time_s": 0.10807604109868407,
+  "solver_status": "Solve_Succeeded",
+  "trajectory_csv": "outputs/phase20_full_oracle_imitation_staged/oracle/stress/scenario_001/oracle_trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 1.0,
+    "actuator_lag_s": 0.6573352173100183,
+    "cm_alpha_scale": 0.8454174308359381,
+    "cm_delta_scale": 1.2293875720674339,
+    "cm_q_scale": 0.6485713174581409,
+    "density_scale": 0.9303608946512464,
+    "external_disturbance_moment_nm": -68.50071747811049,
+    "initial_error": {
+      "alpha_rad": -0.06077663813443997,
+      "q_radps": 0.04369178412569492,
+      "theta_rad": 0.011423261993863554
+    },
+    "scenario_id": 1,
+    "seed": 10056,
+    "sensor_noise_std": {
+      "alpha_rad": 0.003974919790454923,
+      "q_radps": 0.001090421166685319,
+      "theta_rad": 0.006246505115645126
+    }
+  }
+}

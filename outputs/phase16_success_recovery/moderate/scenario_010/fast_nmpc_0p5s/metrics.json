@@ -1,0 +1,60 @@
+{
+  "alpha_violation_count": 0,
+  "alpha_violation_duration_s": 0.0,
+  "control_effort_abs_rad_s": 48.73353054461565,
+  "controller": "fast_nmpc_0p5s",
+  "failure_label": "success",
+  "first_alpha_violation_before_three_updates": false,
+  "first_alpha_violation_side": "none",
+  "first_alpha_violation_time_s": NaN,
+  "flap_rate_saturation_fraction": 0.0,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_corridor_miss_rad": 0.0,
+  "max_alpha_error_rad": 0.060759407641540225,
+  "max_q_corridor_miss_radps": 0.0,
+  "mean_solve_time_s": 0.029969430830318052,
+  "p95_solve_time_s": 0.03148312499979511,
+  "pitch_rate_violation_count": 0,
+  "q_violation_duration_s": 0.0,
+  "rms_alpha_error_rad": 0.03478943131936173,
+  "rms_pitch_rate_error_radps": 0.046444462382929604,
+  "scenario_id": 10,
+  "seed": 65,
+  "solver_failure": false,
+  "tier": "moderate",
+  "trajectory_csv": "outputs/phase16_success_recovery/moderate/scenario_010/fast_nmpc_0p5s/trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 0.5,
+    "actuator_lag_s": 0.32960311763802463,
+    "cm_alpha_scale": 1.005466653261876,
+    "cm_delta_scale": 0.9499434253485177,
+    "cm_q_scale": 0.8914714093255712,
+    "density_scale": 0.8642174456390412,
+    "external_disturbance_moment_nm": 2221.850917262168,
+    "initial_error": {
+      "alpha_rad": -0.04968044093642936,
+      "q_radps": 0.042852932412735696,
+      "theta_rad": -0.01897115270827847
+    },
+    "scenario_id": 10,
+    "seed": 65,
+    "sensor_noise_std": {
+      "alpha_rad": 0.0008365525317918986,
+      "q_radps": 6.46762207459785e-05,
+      "theta_rad": 0.00043271742188083696
+    }
+  },
+  "unstable_response": false,
+  "variant": {
+    "alpha_weight_scale": 1.0,
+    "control_dt_s": 0.5,
+    "control_weight_scale": 1.0,
+    "flap_rate_weight_scale": 1.0,
+    "horizon_steps": 10,
+    "name": "fast_nmpc_0p5s",
+    "planning_alpha_buffer_rad": 0.0,
+    "q_weight_scale": 1.0,
+    "state_slack_scale": 1.0,
+    "terminal_alpha_weight_scale": 1.0
+  }
+}

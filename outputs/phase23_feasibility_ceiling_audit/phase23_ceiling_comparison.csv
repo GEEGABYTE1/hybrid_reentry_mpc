@@ -1,0 +1,3 @@
+tier,scenario_count,phase23_audited_feasible_count,phase23_audited_feasible_rate,phase23_audited_near_feasible_count,phase23_audited_near_feasible_rate,median_max_alpha_miss_rad,max_alpha_miss_rad,phase20_online_success_count,phase20_controlled_count,phase20_oracle_feasible_count,phase20_oracle_near_feasible_count,phase22_best_controller,phase22_best_success_count,phase22_best_controlled_count,phase23_minus_phase20_oracle_count,phase23_minus_phase22_online_count
+moderate,30,15,0.5,24,0.8,0.0005757321607887667,0.03734676130414866,15,24,15,22,online_slack_mpc,15,24,0,0
+stress,30,11,0.36666666666666664,17,0.5666666666666667,0.019362936694557978,0.10179136850008746,11,17,13,15,online_slack_mpc,11,17,-2,0

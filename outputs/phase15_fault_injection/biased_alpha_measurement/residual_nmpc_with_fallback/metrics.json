@@ -1,0 +1,28 @@
+{
+  "alpha_violation_count": 48,
+  "control_effort_abs_rad_s": 51.328430502613,
+  "controller": "residual_nmpc_with_fallback",
+  "failure_label": "alpha_corridor_violation",
+  "fallback_counts": {
+    "constraint_tightening_count": 31,
+    "fault_active_count": 271,
+    "lqr_safe_mode_count": 0,
+    "previous_feasible_control_count": 0
+  },
+  "fault": "biased_alpha_measurement",
+  "fault_parameters": {
+    "alpha_bias_rad": 0.06
+  },
+  "flap_rate_saturation_fraction": 0.0778816199376947,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_error_rad": 0.0762656455289008,
+  "pitch_rate_violation_count": 0,
+  "rms_alpha_error_rad": 0.05159162886035639,
+  "rms_pitch_rate_error_radps": 0.04394136503635177,
+  "scenario_id": 0,
+  "seed": 1511,
+  "solver_failure": false,
+  "tier": "fault_injection",
+  "trajectory_csv": "outputs/phase15_fault_injection/biased_alpha_measurement/residual_nmpc_with_fallback/trajectory.csv",
+  "unstable_response": false
+}

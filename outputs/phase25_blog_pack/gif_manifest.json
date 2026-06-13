@@ -1,0 +1,5 @@
+{
+  "reentry_profile_dynamic_pressure": "outputs/phase25_blog_pack/gifs/reentry_profile_dynamic_pressure.gif",
+  "alpha_corridor_replay": "outputs/phase25_blog_pack/gifs/alpha_corridor_replay.gif",
+  "controller_reentry_comparison": "outputs/phase25_blog_pack/gifs/controller_reentry_comparison.gif"
+}

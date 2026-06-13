@@ -1,0 +1,48 @@
+{
+  "feature_names": [
+    "alpha_rad",
+    "q_radps",
+    "theta_rad",
+    "delta_flap_rad",
+    "mach",
+    "altitude_m",
+    "velocity_mps",
+    "density_kgm3",
+    "dynamic_pressure_pa"
+  ],
+  "note": "Residual targets are x_dot_true - x_dot_nominal. In the current reduced-order model, uncertainty primarily changes q_dot through aerodynamic moment and density scaling.",
+  "seed": 88,
+  "split_counts": {
+    "test": 240,
+    "train": 1120,
+    "val": 240
+  },
+  "target_mean": {
+    "residual_alpha_dot": 0.0,
+    "residual_q_dot": 4.0443628677167e-05,
+    "residual_theta_dot": 0.0
+  },
+  "target_names": [
+    "residual_alpha_dot",
+    "residual_q_dot",
+    "residual_theta_dot"
+  ],
+  "target_std": {
+    "residual_alpha_dot": 0.0,
+    "residual_q_dot": 0.00011471057223388925,
+    "residual_theta_dot": 0.0
+  },
+  "tiers": [
+    {
+      "name": "moderate",
+      "samples_per_scenario": 80,
+      "scenario_count": 10
+    },
+    {
+      "name": "stress",
+      "samples_per_scenario": 80,
+      "scenario_count": 10
+    }
+  ],
+  "total_samples": 1600
+}

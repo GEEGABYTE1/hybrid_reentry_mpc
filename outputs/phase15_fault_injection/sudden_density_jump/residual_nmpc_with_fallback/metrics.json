@@ -1,0 +1,28 @@
+{
+  "alpha_violation_count": 94,
+  "control_effort_abs_rad_s": 49.54726139674666,
+  "controller": "residual_nmpc_with_fallback",
+  "failure_label": "alpha_corridor_violation",
+  "fallback_counts": {
+    "constraint_tightening_count": 45,
+    "fault_active_count": 231,
+    "lqr_safe_mode_count": 0,
+    "previous_feasible_control_count": 0
+  },
+  "fault": "sudden_density_jump",
+  "fault_parameters": {
+    "density_scale": 1.45
+  },
+  "flap_rate_saturation_fraction": 0.04361370716510903,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_error_rad": 0.07905099548553199,
+  "pitch_rate_violation_count": 0,
+  "rms_alpha_error_rad": 0.054216783258638615,
+  "rms_pitch_rate_error_radps": 0.043795313292000156,
+  "scenario_id": 0,
+  "seed": 1511,
+  "solver_failure": false,
+  "tier": "fault_injection",
+  "trajectory_csv": "outputs/phase15_fault_injection/sudden_density_jump/residual_nmpc_with_fallback/trajectory.csv",
+  "unstable_response": false
+}

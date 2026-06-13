@@ -1,0 +1,60 @@
+{
+  "alpha_violation_count": 58,
+  "alpha_violation_duration_s": 29.0,
+  "control_effort_abs_rad_s": 49.72668874537415,
+  "controller": "fast_nmpc_0p5s",
+  "failure_label": "unstable_response",
+  "first_alpha_violation_before_three_updates": false,
+  "first_alpha_violation_side": "high",
+  "first_alpha_violation_time_s": 4.5,
+  "flap_rate_saturation_fraction": 0.024922118380062305,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_corridor_miss_rad": 0.044675862574342085,
+  "max_alpha_error_rad": 0.11467586257434209,
+  "max_q_corridor_miss_radps": 0.0,
+  "mean_solve_time_s": 0.02997880449991476,
+  "p95_solve_time_s": 0.03650833299616352,
+  "pitch_rate_violation_count": 0,
+  "q_violation_duration_s": 0.0,
+  "rms_alpha_error_rad": 0.047741828029397096,
+  "rms_pitch_rate_error_radps": 0.05279081064506205,
+  "scenario_id": 9,
+  "seed": 10064,
+  "solver_failure": false,
+  "tier": "stress",
+  "trajectory_csv": "outputs/phase16_success_recovery/stress/scenario_009/fast_nmpc_0p5s/trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 0.5,
+    "actuator_lag_s": 0.3503435486143336,
+    "cm_alpha_scale": 1.0562693030570327,
+    "cm_delta_scale": 1.032465990952283,
+    "cm_q_scale": 0.8263156380567156,
+    "density_scale": 1.281899664862359,
+    "external_disturbance_moment_nm": 1788.0146016570297,
+    "initial_error": {
+      "alpha_rad": -0.018142358005888995,
+      "q_radps": 0.056068559117104726,
+      "theta_rad": -0.03378990511339164
+    },
+    "scenario_id": 9,
+    "seed": 10064,
+    "sensor_noise_std": {
+      "alpha_rad": 0.0039973642229913595,
+      "q_radps": 0.0017128917307545973,
+      "theta_rad": 0.0028295231143715465
+    }
+  },
+  "unstable_response": true,
+  "variant": {
+    "alpha_weight_scale": 1.0,
+    "control_dt_s": 0.5,
+    "control_weight_scale": 1.0,
+    "flap_rate_weight_scale": 1.0,
+    "horizon_steps": 10,
+    "name": "fast_nmpc_0p5s",
+    "planning_alpha_buffer_rad": 0.0,
+    "q_weight_scale": 1.0,
+    "state_slack_scale": 1.0,
+    "terminal_alpha_weight_scale": 1.0
+  }
+}

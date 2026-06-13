@@ -1,0 +1,10 @@
+tier,controller,failure_label,rollout_count,median_first_alpha_violation_time_s,median_alpha_violation_duration_s,median_needed_alpha_expansion_rad,median_flap_saturation_fraction,median_flap_rate_saturation_fraction
+moderate,nominal_nmpc,alpha_corridor_violation,27,9.5,23.5,0.024332691089260478,0.0,0.08099688473520249
+moderate,residual_corrected_nmpc,alpha_corridor_violation,27,9.5,23.5,0.024332691089260478,0.0,0.08722741433021806
+moderate,residual_corrected_tightened_nmpc,alpha_corridor_violation,27,9.5,23.5,0.024332691089260478,0.0,0.11526479750778816
+stress,nominal_nmpc,alpha_corridor_violation,20,34.5,52.0,0.0643111627288394,0.0,0.08878504672897196
+stress,nominal_nmpc,unstable_response,7,4.0,77.5,0.05823724307450709,0.0,0.009345794392523364
+stress,residual_corrected_nmpc,alpha_corridor_violation,20,34.5,52.25,0.06431116275695455,0.0,0.08566978193146417
+stress,residual_corrected_nmpc,unstable_response,7,4.0,80.0,0.05823724307450648,0.0,0.009345794392523364
+stress,residual_corrected_tightened_nmpc,alpha_corridor_violation,19,35.0,58.5,0.06486154472275463,0.0,0.08411214953271028
+stress,residual_corrected_tightened_nmpc,unstable_response,8,4.0,62.25,0.0554347094031411,0.0,0.017133956386292833

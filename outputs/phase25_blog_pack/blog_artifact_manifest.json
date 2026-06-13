@@ -1,0 +1,67 @@
+[
+  {
+    "artifact": "outputs/phase25_blog_pack/headline_success_summary.csv",
+    "exists_at_pack_time": true,
+    "kind": "data"
+  },
+  {
+    "artifact": "outputs/phase25_blog_pack/headline_success_summary.md",
+    "exists_at_pack_time": true,
+    "kind": "markdown"
+  },
+  {
+    "artifact": "outputs/phase25_blog_pack/blog_pack_summary.md",
+    "exists_at_pack_time": true,
+    "kind": "markdown"
+  },
+  {
+    "artifact": "outputs/phase25_blog_pack/gif_manifest.json",
+    "exists_at_pack_time": true,
+    "kind": "data"
+  },
+  {
+    "artifact": "outputs/phase25_blog_pack/gifs/reentry_profile_dynamic_pressure.gif",
+    "exists_at_pack_time": true,
+    "kind": "figure"
+  },
+  {
+    "artifact": "outputs/phase25_blog_pack/gifs/alpha_corridor_replay.gif",
+    "exists_at_pack_time": true,
+    "kind": "figure"
+  },
+  {
+    "artifact": "outputs/phase25_blog_pack/gifs/controller_reentry_comparison.gif",
+    "exists_at_pack_time": true,
+    "kind": "figure"
+  },
+  {
+    "artifact": "outputs/phase5_monte_carlo/monte_carlo_success_rates.png",
+    "exists_at_pack_time": true,
+    "kind": "figure"
+  },
+  {
+    "artifact": "outputs/phase12_learning_augmented_mpc/residual_mpc_success_rates.png",
+    "exists_at_pack_time": true,
+    "kind": "figure"
+  },
+  {
+    "artifact": "outputs/phase20_full_oracle_imitation/full_oracle_vs_imitation_success.png",
+    "exists_at_pack_time": true,
+    "kind": "figure"
+  },
+  {
+    "artifact": "outputs/phase22_actuator_aware_slack_mpc/slack_mpc_vs_phase20.png",
+    "exists_at_pack_time": true,
+    "kind": "figure"
+  },
+  {
+    "artifact": "outputs/phase23_feasibility_ceiling_audit/phase23_ceiling_vs_online.png",
+    "exists_at_pack_time": true,
+    "kind": "figure"
+  },
+  {
+    "artifact": "outputs/phase24_hybrid_imitation_mpc/hybrid_vs_slack_mpc.png",
+    "exists_at_pack_time": true,
+    "kind": "figure"
+  }
+]

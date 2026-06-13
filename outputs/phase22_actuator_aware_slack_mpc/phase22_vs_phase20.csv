@@ -1,0 +1,7 @@
+tier,controller,scenario_count,phase22_strict_success_count,phase20_strict_success_count,strict_success_delta_count,phase22_controlled_recovery_count,phase20_controlled_recovery_count,mean_alpha_miss_delta_rad,median_alpha_miss_delta_rad
+moderate,online_slack_mpc,30,15,15,0,24,24,2.5138087031769013e-07,0.0
+moderate,online_slack_mpc_centered,30,15,15,0,24,24,-3.5900943552974493e-06,0.0
+moderate,online_slack_mpc_fast,30,15,15,0,24,24,3.024771950383494e-05,1.9029438359321332e-05
+stress,online_slack_mpc,30,11,11,0,17,17,5.24043966136532e-05,8.752479131041158e-08
+stress,online_slack_mpc_centered,30,11,11,0,17,17,3.2141998748244924e-05,5.355122623118547e-09
+stress,online_slack_mpc_fast,30,11,11,0,17,17,0.00011400996745668598,2.9120218459093364e-05

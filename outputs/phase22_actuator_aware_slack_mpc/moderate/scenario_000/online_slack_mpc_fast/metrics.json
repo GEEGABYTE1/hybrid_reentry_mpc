@@ -1,0 +1,67 @@
+{
+  "alpha_violation_count": 0,
+  "alpha_violation_duration_s": 0.0,
+  "control_effort_abs_rad_s": 0.6396811126144404,
+  "controlled_recovery": true,
+  "controlled_recovery_max_alpha_miss_rad": 0.0,
+  "controlled_recovery_max_q_miss_radps": 0.0,
+  "controller": "online_slack_mpc_fast",
+  "failure_label": "success",
+  "first_alpha_violation_before_three_updates": false,
+  "first_alpha_violation_side": "none",
+  "first_alpha_violation_time_s": NaN,
+  "flap_rate_saturation_fraction": 0.0,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_corridor_miss_rad": 0.0,
+  "max_alpha_error_rad": 0.05379898374530101,
+  "max_q_corridor_miss_radps": 0.0,
+  "mean_solve_time_s": 0.016377869849725637,
+  "p95_solve_time_s": 0.01795925002079457,
+  "pitch_rate_violation_count": 0,
+  "q_violation_duration_s": 0.0,
+  "rms_alpha_error_rad": 0.03421245387735597,
+  "rms_pitch_rate_error_radps": 0.042355629685979335,
+  "scenario_id": 0,
+  "seed": 55,
+  "solver_failure": false,
+  "tier": "moderate",
+  "trajectory_csv": "outputs/phase22_actuator_aware_slack_mpc/moderate/scenario_000/online_slack_mpc_fast/trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 0.5,
+    "actuator_lag_s": 0.17246008473590804,
+    "cm_alpha_scale": 1.1111936835149023,
+    "cm_delta_scale": 0.8873447595370492,
+    "cm_q_scale": 0.8920388602447822,
+    "density_scale": 1.099675655036485,
+    "external_disturbance_moment_nm": -2288.5715472335214,
+    "initial_error": {
+      "alpha_rad": -0.03526714350779047,
+      "q_radps": 0.043317852661921875,
+      "theta_rad": 0.00407667571118842
+    },
+    "scenario_id": 0,
+    "seed": 55,
+    "sensor_noise_std": {
+      "alpha_rad": 0.002112697278039903,
+      "q_radps": 0.001420628984150504,
+      "theta_rad": 0.00020335583094168374
+    }
+  },
+  "unstable_response": false,
+  "variant": {
+    "alpha_buffer_rad": 0.0,
+    "control_dt_s": 0.5,
+    "horizon_steps": 4,
+    "name": "online_slack_mpc_fast",
+    "terminal_center_weight": 2500.0,
+    "weights": {
+      "alpha_center": 1200.0,
+      "alpha_slack": 120000000.0,
+      "command": 0.03,
+      "command_rate": 0.35,
+      "q_center": 300.0,
+      "q_slack": 8000000.0,
+      "theta_tracking": 1.0
+    }
+  }
+}

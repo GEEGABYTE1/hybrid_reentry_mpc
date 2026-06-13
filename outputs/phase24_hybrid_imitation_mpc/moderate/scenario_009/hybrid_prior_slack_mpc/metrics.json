@@ -1,0 +1,72 @@
+{
+  "alpha_violation_count": 0,
+  "alpha_violation_duration_s": 0.0,
+  "control_effort_abs_rad_s": 10.55196071633505,
+  "controlled_recovery": true,
+  "controlled_recovery_max_alpha_miss_rad": 0.0,
+  "controlled_recovery_max_q_miss_radps": 0.0,
+  "controller": "hybrid_prior_slack_mpc",
+  "failure_label": "success",
+  "first_alpha_violation_before_three_updates": false,
+  "first_alpha_violation_side": "none",
+  "first_alpha_violation_time_s": NaN,
+  "flap_rate_saturation_fraction": 0.0,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_corridor_miss_rad": 0.0,
+  "max_alpha_error_rad": 0.06397602923250073,
+  "max_q_corridor_miss_radps": 0.0,
+  "mean_solve_time_s": 0.02303796341620022,
+  "oracle_feasible": true,
+  "oracle_max_alpha_miss_rad": 0.0,
+  "oracle_near_feasible": true,
+  "p95_solve_time_s": 0.024592333007603884,
+  "pitch_rate_violation_count": 0,
+  "q_violation_duration_s": 0.0,
+  "rms_alpha_error_rad": 0.04317208743135912,
+  "rms_pitch_rate_error_radps": 0.04649962847616396,
+  "scenario_id": 9,
+  "seed": 64,
+  "solver_failure": false,
+  "tier": "moderate",
+  "trajectory_csv": "outputs/phase24_hybrid_imitation_mpc/moderate/scenario_009/hybrid_prior_slack_mpc/trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 1.0,
+    "actuator_lag_s": 0.30044609995951377,
+    "cm_alpha_scale": 1.0070018887422227,
+    "cm_delta_scale": 0.8262843749716177,
+    "cm_q_scale": 0.9274235112624596,
+    "density_scale": 1.1330480358221209,
+    "external_disturbance_moment_nm": 968.9782197362363,
+    "initial_error": {
+      "alpha_rad": -0.04898561862990772,
+      "q_radps": 0.04491250406958837,
+      "theta_rad": 0.0022242335183021524
+    },
+    "scenario_id": 9,
+    "seed": 64,
+    "sensor_noise_std": {
+      "alpha_rad": 0.0029560957500721105,
+      "q_radps": 0.0009380721776113753,
+      "theta_rad": 0.000451621436160318
+    }
+  },
+  "unstable_response": false,
+  "variant": {
+    "alpha_buffer_rad": 0.0,
+    "blend_initial_command": false,
+    "command_prior_weight": 0.12,
+    "control_dt_s": 1.0,
+    "horizon_steps": 6,
+    "name": "hybrid_prior_slack_mpc",
+    "terminal_center_weight": 3000.0,
+    "weights": {
+      "alpha_center": 1500.0,
+      "alpha_slack": 120000000.0,
+      "command": 0.025,
+      "command_rate": 0.25,
+      "q_center": 350.0,
+      "q_slack": 8000000.0,
+      "theta_tracking": 1.0
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "columns_in_reference_profile_csv": [
+    "time_s",
+    "altitude_m",
+    "velocity_mps",
+    "mach",
+    "density_kgm3",
+    "dynamic_pressure_pa",
+    "heating_proxy",
+    "alpha_ref_rad",
+    "theta_ref_rad",
+    "q_ref_radps",
+    "alpha_min_rad",
+    "alpha_max_rad",
+    "q_min_radps",
+    "q_max_radps",
+    "flap_min_rad",
+    "flap_max_rad",
+    "flap_rate_min_radps",
+    "flap_rate_max_radps",
+    "dynamic_pressure_limit_pa",
+    "heating_proxy_limit",
+    "dynamic_pressure_limit_exceeded",
+    "heating_proxy_limit_exceeded"
+  ],
+  "constraints": {
+    "alpha_margin_rad": 0.07,
+    "alpha_max_abs_rad": 0.42,
+    "alpha_min_abs_rad": -0.05,
+    "flap_max_rad": 0.35,
+    "flap_min_rad": -0.35,
+    "flap_rate_max_radps": 0.18,
+    "flap_rate_min_radps": -0.18,
+    "q_max_radps": 0.08,
+    "q_min_radps": -0.08
+  },
+  "diagnostics": {
+    "dynamic_pressure_limit_exceeded": true,
+    "dynamic_pressure_limit_pa": 8500.0,
+    "heating_proxy_limit": 250000000.0,
+    "heating_proxy_limit_exceeded": true,
+    "max_dynamic_pressure_pa": 9179.117227284241,
+    "max_heating_proxy": 1062515654.3689982
+  },
+  "dt": 0.5,
+  "duration_s": 160.0,
+  "reference_profile": {
+    "alpha_end_rad": 0.16,
+    "alpha_peak_rad": 0.28,
+    "alpha_start_rad": 0.12,
+    "end_altitude_m": 43000.0,
+    "end_velocity_mps": 2800.0,
+    "start_altitude_m": 82000.0,
+    "start_velocity_mps": 6200.0,
+    "theta_end_rad": -0.18,
+    "theta_start_rad": 0.08
+  },
+  "seed": 22
+}

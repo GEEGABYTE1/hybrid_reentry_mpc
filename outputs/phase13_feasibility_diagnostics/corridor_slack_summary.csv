@@ -1,0 +1,37 @@
+tier,controller,alpha_slack_bin_rad,rollout_count
+moderate,nominal_nmpc,"(-0.001, 0.0025]",4
+moderate,nominal_nmpc,"(0.0025, 0.005]",3
+moderate,nominal_nmpc,"(0.005, 0.01]",2
+moderate,nominal_nmpc,"(0.01, 0.02]",3
+moderate,nominal_nmpc,"(0.02, 0.05]",17
+moderate,nominal_nmpc,"(0.05, 0.1]",1
+moderate,residual_corrected_nmpc,"(-0.001, 0.0025]",4
+moderate,residual_corrected_nmpc,"(0.0025, 0.005]",3
+moderate,residual_corrected_nmpc,"(0.005, 0.01]",2
+moderate,residual_corrected_nmpc,"(0.01, 0.02]",3
+moderate,residual_corrected_nmpc,"(0.02, 0.05]",17
+moderate,residual_corrected_nmpc,"(0.05, 0.1]",1
+moderate,residual_corrected_tightened_nmpc,"(-0.001, 0.0025]",4
+moderate,residual_corrected_tightened_nmpc,"(0.0025, 0.005]",3
+moderate,residual_corrected_tightened_nmpc,"(0.005, 0.01]",2
+moderate,residual_corrected_tightened_nmpc,"(0.01, 0.02]",3
+moderate,residual_corrected_tightened_nmpc,"(0.02, 0.05]",17
+moderate,residual_corrected_tightened_nmpc,"(0.05, 0.1]",1
+stress,nominal_nmpc,"(-0.001, 0.0025]",3
+stress,nominal_nmpc,"(0.005, 0.01]",1
+stress,nominal_nmpc,"(0.01, 0.02]",3
+stress,nominal_nmpc,"(0.02, 0.05]",7
+stress,nominal_nmpc,"(0.05, 0.1]",11
+stress,nominal_nmpc,nan,5
+stress,residual_corrected_nmpc,"(-0.001, 0.0025]",3
+stress,residual_corrected_nmpc,"(0.005, 0.01]",1
+stress,residual_corrected_nmpc,"(0.01, 0.02]",3
+stress,residual_corrected_nmpc,"(0.02, 0.05]",7
+stress,residual_corrected_nmpc,"(0.05, 0.1]",11
+stress,residual_corrected_nmpc,nan,5
+stress,residual_corrected_tightened_nmpc,"(-0.001, 0.0025]",3
+stress,residual_corrected_tightened_nmpc,"(0.005, 0.01]",1
+stress,residual_corrected_tightened_nmpc,"(0.01, 0.02]",3
+stress,residual_corrected_tightened_nmpc,"(0.02, 0.05]",7
+stress,residual_corrected_tightened_nmpc,"(0.05, 0.1]",11
+stress,residual_corrected_tightened_nmpc,nan,5

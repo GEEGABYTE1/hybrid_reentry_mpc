@@ -1,0 +1,43 @@
+{
+  "alpha_violation_count": 158,
+  "control_effort_abs_rad_s": 48.77593184917548,
+  "controller": "residual_corrected_nmpc",
+  "failure_label": "alpha_corridor_violation",
+  "flap_rate_saturation_fraction": 0.11838006230529595,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_error_rad": 0.14118588747411648,
+  "pitch_rate_violation_count": 0,
+  "residual_gain": 1.0,
+  "residual_model_checkpoint": "outputs/phase9_residual_model/residual_model_checkpoint.pt",
+  "rms_alpha_error_rad": 0.08696445581796323,
+  "rms_pitch_rate_error_radps": 0.03292209848829106,
+  "scenario_id": 8,
+  "seed": 10063,
+  "solver_failure": false,
+  "tier": "stress",
+  "trajectory_csv": "outputs/phase12_learning_augmented_mpc/stress/scenario_008/residual_corrected_nmpc/trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 1.5,
+    "actuator_lag_s": 0.5503909427735989,
+    "cm_alpha_scale": 0.7696806349912375,
+    "cm_delta_scale": 0.9305283352741281,
+    "cm_q_scale": 1.2375055536530342,
+    "density_scale": 0.8335060423399854,
+    "external_disturbance_moment_nm": -2133.7130355660106,
+    "initial_error": {
+      "alpha_rad": -0.03685153363557458,
+      "q_radps": 0.03625405135993723,
+      "theta_rad": -0.02996141992935113
+    },
+    "scenario_id": 8,
+    "seed": 10063,
+    "sensor_noise_std": {
+      "alpha_rad": 0.0044337869270696635,
+      "q_radps": 0.0032557376219124403,
+      "theta_rad": 0.006310158083378462
+    }
+  },
+  "unstable_response": false,
+  "use_residual_model": true,
+  "use_tightened_corridor": false
+}

@@ -1,0 +1,72 @@
+{
+  "alpha_violation_count": 74,
+  "alpha_violation_duration_s": 37.0,
+  "control_effort_abs_rad_s": 13.48245663001854,
+  "controlled_recovery": false,
+  "controlled_recovery_max_alpha_miss_rad": 0.07824196690348773,
+  "controlled_recovery_max_q_miss_radps": 0.0,
+  "controller": "hybrid_blended_slack_mpc",
+  "failure_label": "alpha_corridor_violation",
+  "first_alpha_violation_before_three_updates": false,
+  "first_alpha_violation_side": "high",
+  "first_alpha_violation_time_s": 3.5,
+  "flap_rate_saturation_fraction": 0.037037037037037035,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_corridor_miss_rad": 0.07824196690348773,
+  "max_alpha_error_rad": 0.14824196690348773,
+  "max_q_corridor_miss_radps": 0.0,
+  "mean_solve_time_s": 0.026327971644449708,
+  "oracle_feasible": false,
+  "oracle_max_alpha_miss_rad": 0.0782031116787716,
+  "oracle_near_feasible": false,
+  "p95_solve_time_s": 0.028376667061820626,
+  "pitch_rate_violation_count": 0,
+  "q_violation_duration_s": 0.0,
+  "rms_alpha_error_rad": 0.12446841456785927,
+  "rms_pitch_rate_error_radps": 0.06743768913130821,
+  "scenario_id": 22,
+  "seed": 10077,
+  "solver_failure": false,
+  "tier": "stress",
+  "trajectory_csv": "outputs/phase24_hybrid_imitation_mpc/stress/scenario_022/hybrid_blended_slack_mpc/trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 1.0,
+    "actuator_lag_s": 0.1444616208536915,
+    "cm_alpha_scale": 0.7479706285519162,
+    "cm_delta_scale": 0.8930510953330396,
+    "cm_q_scale": 1.2918532680312296,
+    "density_scale": 0.9552074929670727,
+    "external_disturbance_moment_nm": 5215.6779022646915,
+    "initial_error": {
+      "alpha_rad": -0.03127441036035443,
+      "q_radps": 0.06240095803358317,
+      "theta_rad": -0.007822714576914703
+    },
+    "scenario_id": 22,
+    "seed": 10077,
+    "sensor_noise_std": {
+      "alpha_rad": 0.004001203782674152,
+      "q_radps": 0.0009045231331410499,
+      "theta_rad": 0.004723597453121965
+    }
+  },
+  "unstable_response": false,
+  "variant": {
+    "alpha_buffer_rad": 0.0,
+    "blend_initial_command": true,
+    "command_prior_weight": 0.05,
+    "control_dt_s": 1.0,
+    "horizon_steps": 6,
+    "name": "hybrid_blended_slack_mpc",
+    "terminal_center_weight": 3000.0,
+    "weights": {
+      "alpha_center": 1500.0,
+      "alpha_slack": 120000000.0,
+      "command": 0.025,
+      "command_rate": 0.25,
+      "q_center": 350.0,
+      "q_slack": 8000000.0,
+      "theta_tracking": 1.0
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "alpha_violation_count": 147,
+  "alpha_violation_duration_s": 73.5,
+  "control_effort_abs_rad_s": 51.90668477197432,
+  "controller": "corridor_barrier_nmpc",
+  "failure_label": "unstable_response",
+  "first_alpha_violation_before_three_updates": false,
+  "first_alpha_violation_side": "high",
+  "first_alpha_violation_time_s": 3.0,
+  "flap_rate_saturation_fraction": 0.0,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_corridor_miss_rad": 0.10182809293369316,
+  "max_alpha_error_rad": 0.17182809293369317,
+  "max_q_corridor_miss_radps": 0.0,
+  "mean_solve_time_s": 0.03249418977383275,
+  "p95_solve_time_s": 0.0376813750481233,
+  "pitch_rate_violation_count": 0,
+  "q_violation_duration_s": 0.0,
+  "rms_alpha_error_rad": 0.09083072516528157,
+  "rms_pitch_rate_error_radps": 0.06659188365087482,
+  "scenario_id": 7,
+  "seed": 10062,
+  "solver_failure": false,
+  "tier": "stress",
+  "trajectory_csv": "outputs/phase16_success_recovery/stress/scenario_007/corridor_barrier_nmpc/trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 0.5,
+    "actuator_lag_s": 0.5192310882170614,
+    "cm_alpha_scale": 1.0388272811690047,
+    "cm_delta_scale": 1.3554360679161346,
+    "cm_q_scale": 1.3044208428948538,
+    "density_scale": 1.2089415706681728,
+    "external_disturbance_moment_nm": 3459.989578338532,
+    "initial_error": {
+      "alpha_rad": -0.02856479410371991,
+      "q_radps": 0.06863168780382735,
+      "theta_rad": 0.03341671052271779
+    },
+    "scenario_id": 7,
+    "seed": 10062,
+    "sensor_noise_std": {
+      "alpha_rad": 0.0026701265000948606,
+      "q_radps": 0.0005495050286051618,
+      "theta_rad": 0.003951881981624145
+    }
+  },
+  "unstable_response": true,
+  "variant": {
+    "alpha_weight_scale": 2.0,
+    "control_dt_s": 0.5,
+    "control_weight_scale": 0.7,
+    "flap_rate_weight_scale": 0.7,
+    "horizon_steps": 10,
+    "name": "corridor_barrier_nmpc",
+    "planning_alpha_buffer_rad": 0.015,
+    "q_weight_scale": 1.3,
+    "state_slack_scale": 3.0,
+    "terminal_alpha_weight_scale": 2.0
+  }
+}

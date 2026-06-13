@@ -1,0 +1,67 @@
+{
+  "alpha_violation_count": 21,
+  "alpha_violation_duration_s": 10.5,
+  "control_effort_abs_rad_s": 13.112954691547207,
+  "controlled_recovery": false,
+  "controlled_recovery_max_alpha_miss_rad": 0.0352394683179162,
+  "controlled_recovery_max_q_miss_radps": 0.0,
+  "controller": "online_slack_mpc_centered",
+  "failure_label": "alpha_corridor_violation",
+  "first_alpha_violation_before_three_updates": false,
+  "first_alpha_violation_side": "low",
+  "first_alpha_violation_time_s": 30.0,
+  "flap_rate_saturation_fraction": 0.0,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_corridor_miss_rad": 0.0352394683179162,
+  "max_alpha_error_rad": 0.10523946831791621,
+  "max_q_corridor_miss_radps": 0.0,
+  "mean_solve_time_s": 0.023983393253463253,
+  "p95_solve_time_s": 0.0288955420255661,
+  "pitch_rate_violation_count": 0,
+  "q_violation_duration_s": 0.0,
+  "rms_alpha_error_rad": 0.05614850395033507,
+  "rms_pitch_rate_error_radps": 0.024711559151514146,
+  "scenario_id": 17,
+  "seed": 10072,
+  "solver_failure": false,
+  "tier": "stress",
+  "trajectory_csv": "outputs/phase22_actuator_aware_slack_mpc/stress/scenario_017/online_slack_mpc_centered/trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 0.5,
+    "actuator_lag_s": 0.5088030678522094,
+    "cm_alpha_scale": 1.1674382533539729,
+    "cm_delta_scale": 0.601755866814456,
+    "cm_q_scale": 0.8705304857647,
+    "density_scale": 0.8755295136153882,
+    "external_disturbance_moment_nm": 136.40725027485112,
+    "initial_error": {
+      "alpha_rad": -0.008921181859440304,
+      "q_radps": 0.023609889607331222,
+      "theta_rad": 0.004686267589004223
+    },
+    "scenario_id": 17,
+    "seed": 10072,
+    "sensor_noise_std": {
+      "alpha_rad": 0.00316924769798907,
+      "q_radps": 0.0030747975409321235,
+      "theta_rad": 0.004035004019839749
+    }
+  },
+  "unstable_response": false,
+  "variant": {
+    "alpha_buffer_rad": 0.002,
+    "control_dt_s": 1.0,
+    "horizon_steps": 6,
+    "name": "online_slack_mpc_centered",
+    "terminal_center_weight": 12000.0,
+    "weights": {
+      "alpha_center": 6000.0,
+      "alpha_slack": 120000000.0,
+      "command": 0.025,
+      "command_rate": 0.3,
+      "q_center": 600.0,
+      "q_slack": 8000000.0,
+      "theta_tracking": 1.0
+    }
+  }
+}

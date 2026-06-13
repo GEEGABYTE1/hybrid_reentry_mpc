@@ -1,0 +1,3 @@
+tier,scenario_count,feasible_count,feasible_rate,near_feasible_count,near_feasible_rate,median_max_alpha_miss_rad,max_alpha_miss_rad
+moderate,30,15,0.5,24,0.8,0.0005757321607887667,0.03734676130414866
+stress,30,11,0.36666666666666664,17,0.5666666666666667,0.019362936694557978,0.10179136850008746

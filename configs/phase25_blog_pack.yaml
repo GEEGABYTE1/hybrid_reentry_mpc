@@ -1,0 +1,34 @@
+phase2_reference_csv: outputs/phase2_reference/reference_profile.csv
+phase5_summary_csv: outputs/phase5_monte_carlo/monte_carlo_summary.csv
+phase5_rollouts_csv: outputs/phase5_monte_carlo/monte_carlo_rollouts.csv
+phase12_summary_csv: outputs/phase12_learning_augmented_mpc/phase12_summary_table.csv
+phase20_comparison_csv: outputs/phase20_full_oracle_imitation/phase20_comparison.csv
+phase22_comparison_csv: outputs/phase22_actuator_aware_slack_mpc/phase22_variant_comparison.csv
+phase23_ceiling_csv: outputs/phase23_feasibility_ceiling_audit/phase23_feasibility_ceiling.csv
+phase24_comparison_csv: outputs/phase24_hybrid_imitation_mpc/phase24_variant_comparison.csv
+phase24_rollouts_csv: outputs/phase24_hybrid_imitation_mpc/phase24_rollouts.csv
+
+headline_figure_paths:
+  - outputs/phase5_monte_carlo/monte_carlo_success_rates.png
+  - outputs/phase12_learning_augmented_mpc/residual_mpc_success_rates.png
+  - outputs/phase20_full_oracle_imitation/full_oracle_vs_imitation_success.png
+  - outputs/phase22_actuator_aware_slack_mpc/slack_mpc_vs_phase20.png
+  - outputs/phase23_feasibility_ceiling_audit/phase23_ceiling_vs_online.png
+  - outputs/phase24_hybrid_imitation_mpc/hybrid_vs_slack_mpc.png
+
+controller_gif_sources:
+  - label: PID
+    trajectory_csv: outputs/phase5_monte_carlo/moderate/scenario_000/pid/trajectory.csv
+  - label: Gain-scheduled LQR
+    trajectory_csv: outputs/phase5_monte_carlo/moderate/scenario_000/gain_scheduled_lqr/trajectory.csv
+  - label: Nominal NMPC
+    trajectory_csv: outputs/phase5_monte_carlo/moderate/scenario_000/nominal_nmpc/trajectory.csv
+  - label: Slack-MPC
+    trajectory_csv: outputs/phase22_actuator_aware_slack_mpc/moderate/scenario_000/online_slack_mpc_centered/trajectory.csv
+  - label: Hybrid imitation MPC
+    trajectory_csv: outputs/phase24_hybrid_imitation_mpc/moderate/scenario_000/hybrid_blended_slack_mpc/trajectory.csv
+
+animations:
+  fps: 10
+  controller_fps: 5
+  max_frames: 180

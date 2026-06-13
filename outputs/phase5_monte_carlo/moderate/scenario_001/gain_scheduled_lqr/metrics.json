@@ -1,0 +1,39 @@
+{
+  "alpha_violation_count": 155,
+  "control_effort_abs_rad_s": 55.81,
+  "controller": "gain_scheduled_lqr",
+  "failure_label": "alpha_corridor_violation",
+  "flap_rate_saturation_fraction": 1.0,
+  "flap_saturation_fraction": 0.9906542056074766,
+  "max_alpha_error_rad": 0.14336099708035852,
+  "pitch_rate_violation_count": 0,
+  "rms_alpha_error_rad": 0.07279951616187184,
+  "rms_pitch_rate_error_radps": 0.03656314729979287,
+  "scenario_id": 1,
+  "seed": 56,
+  "solver_failure": false,
+  "tier": "moderate",
+  "trajectory_csv": "outputs/phase5_monte_carlo/moderate/scenario_001/gain_scheduled_lqr/trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 0.0,
+    "actuator_lag_s": 0.19047425565328424,
+    "cm_alpha_scale": 0.8550708443435929,
+    "cm_delta_scale": 1.1923204271077104,
+    "cm_q_scale": 1.08984168484952,
+    "density_scale": 1.067837814989062,
+    "external_disturbance_moment_nm": 1888.1114567916945,
+    "initial_error": {
+      "alpha_rad": -0.042169232542380676,
+      "q_radps": 0.037161912636399425,
+      "theta_rad": 0.003739433990046943
+    },
+    "scenario_id": 1,
+    "seed": 56,
+    "sensor_noise_std": {
+      "alpha_rad": 0.001819893511792798,
+      "q_radps": 0.0005389072581292835,
+      "theta_rad": 0.0017670007129131713
+    }
+  },
+  "unstable_response": false
+}

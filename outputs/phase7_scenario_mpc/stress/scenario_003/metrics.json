@@ -1,0 +1,65 @@
+{
+  "alpha_violation_count": 53,
+  "control_effort_abs_rad_s": 44.82164488043189,
+  "controller": "scenario_nmpc",
+  "design_scenarios": [
+    {
+      "cm_alpha_scale": 1.0,
+      "cm_delta_scale": 1.0,
+      "cm_q_scale": 1.0,
+      "density_scale": 1.0,
+      "external_disturbance_moment_nm": 0.0,
+      "name": "nominal"
+    },
+    {
+      "cm_alpha_scale": 1.1,
+      "cm_delta_scale": 0.72,
+      "cm_q_scale": 0.85,
+      "density_scale": 0.82,
+      "external_disturbance_moment_nm": 2200.0,
+      "name": "low_authority"
+    },
+    {
+      "cm_alpha_scale": 0.9,
+      "cm_delta_scale": 1.18,
+      "cm_q_scale": 1.15,
+      "density_scale": 1.18,
+      "external_disturbance_moment_nm": -2200.0,
+      "name": "high_pressure_reverse_disturbance"
+    }
+  ],
+  "failure_label": "alpha_corridor_violation",
+  "flap_rate_saturation_fraction": 0.22118380062305296,
+  "flap_saturation_fraction": 0.0,
+  "max_alpha_error_rad": 0.11791709584898599,
+  "pitch_rate_violation_count": 0,
+  "rms_alpha_error_rad": 0.052476130937898754,
+  "rms_pitch_rate_error_radps": 0.049278834226511,
+  "scenario_id": 3,
+  "seed": 10058,
+  "solver_failure": false,
+  "tier": "stress",
+  "trajectory_csv": "outputs/phase7_scenario_mpc/stress/scenario_003/trajectory.csv",
+  "uncertainty_parameters": {
+    "actuator_delay_s": 1.5,
+    "actuator_lag_s": 0.4807149936858969,
+    "cm_alpha_scale": 0.7368166561589482,
+    "cm_delta_scale": 1.098880145389692,
+    "cm_q_scale": 0.9663426523519489,
+    "density_scale": 0.8400348122237011,
+    "external_disturbance_moment_nm": -2492.964583448316,
+    "initial_error": {
+      "alpha_rad": -0.027669301938465292,
+      "q_radps": 0.05848110963791403,
+      "theta_rad": 0.030446402496627712
+    },
+    "scenario_id": 3,
+    "seed": 10058,
+    "sensor_noise_std": {
+      "alpha_rad": 0.007381684733804169,
+      "q_radps": 0.0039628751550082695,
+      "theta_rad": 0.0015802535717956004
+    }
+  },
+  "unstable_response": false
+}

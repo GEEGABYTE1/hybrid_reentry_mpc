@@ -1,0 +1,5 @@
+tier,controller,scenario_count,strict_success_count,strict_success_rate,controlled_recovery_count,controlled_recovery_rate,mean_rms_alpha_error_rad,median_max_alpha_miss_rad,mean_early_best_emergency_miss_rad,delay_limited_fraction
+moderate,actuator_aware_safety_nmpc,3,0,0.0,2,0.6666666666666666,0.05709523325138472,0.01854360929138571,0.0,0.0
+moderate,governed_safety_nmpc,3,0,0.0,2,0.6666666666666666,0.05711480746716293,0.018601210113949967,0.0,0.0
+stress,actuator_aware_safety_nmpc,3,0,0.0,2,0.6666666666666666,0.058604348339214206,0.013059585014814357,0.023996551123712295,0.0
+stress,governed_safety_nmpc,3,0,0.0,2,0.6666666666666666,0.05861440024501829,0.013128575977447848,0.023996551123712295,0.0

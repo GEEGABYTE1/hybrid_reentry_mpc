@@ -1,0 +1,19 @@
+story_stage,tier,controller,scenario_count,strict_success_count,strict_success_rate,controlled_recovery_count,controlled_recovery_rate,source,note
+Phase 12: residual-learning MPC,moderate,nominal_nmpc,30,3,0.1,,,outputs/phase12_learning_augmented_mpc/phase12_summary_table.csv,Residual correction did not improve strict success.
+Phase 12: residual-learning MPC,moderate,residual_corrected_nmpc,30,3,0.1,,,outputs/phase12_learning_augmented_mpc/phase12_summary_table.csv,Residual correction did not improve strict success.
+Phase 20: oracle imitation,moderate,ridge_safety,30,15,0.5,24.0,0.8,outputs/phase20_full_oracle_imitation/phase20_comparison.csv,Ridge oracle imitation scaled to the full benchmark.
+Phase 22: actuator-aware slack-MPC,moderate,online_slack_mpc_centered,30,15,0.5,24.0,0.8,outputs/phase22_actuator_aware_slack_mpc/phase22_variant_comparison.csv,Online slack-first MPC matched the later audited ceiling.
+Phase 23: audited feasibility ceiling,moderate,actuator_truth_consistent_oracle,30,15,0.5,24.0,0.8,outputs/phase23_feasibility_ceiling_audit/phase23_feasibility_ceiling.csv,Non-causal audited ceiling; not an online controller.
+Phase 24: hybrid imitation + MPC,moderate,hybrid_blended_slack_mpc,30,15,0.5,24.0,0.8,outputs/phase24_hybrid_imitation_mpc/phase24_variant_comparison.csv,Learning proposes a warm start/prior; MPC decides.
+Phase 5: nominal benchmark,moderate,gain_scheduled_lqr,30,0,0.0,,,outputs/phase5_monte_carlo/monte_carlo_summary.csv,Original fixed Monte Carlo benchmark.
+Phase 5: nominal benchmark,moderate,nominal_nmpc,30,3,0.1,,,outputs/phase5_monte_carlo/monte_carlo_summary.csv,Original fixed Monte Carlo benchmark.
+Phase 5: nominal benchmark,moderate,pid,30,1,0.03333333333333333,,,outputs/phase5_monte_carlo/monte_carlo_summary.csv,Original fixed Monte Carlo benchmark.
+Phase 12: residual-learning MPC,stress,nominal_nmpc,30,3,0.1,,,outputs/phase12_learning_augmented_mpc/phase12_summary_table.csv,Residual correction did not improve strict success.
+Phase 12: residual-learning MPC,stress,residual_corrected_nmpc,30,3,0.1,,,outputs/phase12_learning_augmented_mpc/phase12_summary_table.csv,Residual correction did not improve strict success.
+Phase 20: oracle imitation,stress,ridge_safety,30,11,0.36666666666666664,17.0,0.5666666666666667,outputs/phase20_full_oracle_imitation/phase20_comparison.csv,Ridge oracle imitation scaled to the full benchmark.
+Phase 22: actuator-aware slack-MPC,stress,online_slack_mpc_centered,30,11,0.36666666666666664,17.0,0.5666666666666667,outputs/phase22_actuator_aware_slack_mpc/phase22_variant_comparison.csv,Online slack-first MPC matched the later audited ceiling.
+Phase 23: audited feasibility ceiling,stress,actuator_truth_consistent_oracle,30,11,0.36666666666666664,17.0,0.5666666666666667,outputs/phase23_feasibility_ceiling_audit/phase23_feasibility_ceiling.csv,Non-causal audited ceiling; not an online controller.
+Phase 24: hybrid imitation + MPC,stress,hybrid_blended_slack_mpc,30,11,0.36666666666666664,17.0,0.5666666666666667,outputs/phase24_hybrid_imitation_mpc/phase24_variant_comparison.csv,Learning proposes a warm start/prior; MPC decides.
+Phase 5: nominal benchmark,stress,gain_scheduled_lqr,30,0,0.0,,,outputs/phase5_monte_carlo/monte_carlo_summary.csv,Original fixed Monte Carlo benchmark.
+Phase 5: nominal benchmark,stress,nominal_nmpc,30,3,0.1,,,outputs/phase5_monte_carlo/monte_carlo_summary.csv,Original fixed Monte Carlo benchmark.
+Phase 5: nominal benchmark,stress,pid,30,2,0.06666666666666667,,,outputs/phase5_monte_carlo/monte_carlo_summary.csv,Original fixed Monte Carlo benchmark.
